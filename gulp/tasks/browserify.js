@@ -6,9 +6,12 @@ var buffer = require('vinyl-buffer');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var path = require('path');
+var babelify = require('babelify');
 
 
 var bundler = watchify(browserify(path.join(__dirname, '../../client/src/javascript/client.js'), watchify.args));
+
+bundler.transform(babelify);
 
 gulp.task('browserify', bundle);
 bundler.on('update', bundle);

@@ -1,17 +1,17 @@
-// Gulpfile.js
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var jshint = require('gulp-jshint');
 
-gulp.task('lint', function () {
-  gulp.src('./**/*.js')
-    .pipe(jshint())
-})
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
 
-gulp.task('nodemon', function () {
-  nodemon({ script: 'server.js', ext: 'html js'})
-    .on('change', ['lint'])
-    .on('restart', function () {
-      console.log('restarted!')
-    })
-})
+    // nodemon our expressjs server
+    script: 'server.js',
+
+    // watch core server file(s) that require server restart on change
+    watch: ['server.js','views/','lib/','controllers/','client/src/'],
+
+    // html json etc.
+    ext: "js html css json scss"
+  })
+});

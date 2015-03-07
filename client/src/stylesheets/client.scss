@@ -1,0 +1,50 @@
+body {
+  background-color: #eee !important;
+}
+#body_container {
+  margin-top: 62px;
+}
+.score {
+  text-align: center;
+}
+.ttable {
+  background-color: #B7DE53;
+  width: 50%;
+  height: 400px;
+  // border: 1px solid #8DAB41;
+  border: 3px solid #fff;
+}
+.ttable-left {
+  box-shadow: -3px 3px 10px #888888;
+}
+.ttable-right {
+  box-shadow: 3px 3px 10px #888888;
+}
+img.img-circle {
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  border: 3px solid #fff;
+  box-shadow: 0px 0px 10px #888888;
+}
+.col-table, .left-person, .right-person, pre {
+  height: 406px;
+}
+pre {
+  width: 50%;
+}
+.left-person,.right-person{
+  .player {
+    .player-left {
+      float: right;
+    }
+    .player-right {
+      float: left;
+    }
+    text-align: center;
+  }
+}
+.left-person, .right-person {
+  display: table-cell;
+  vertical-align: middle;
+}
