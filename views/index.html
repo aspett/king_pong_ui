@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script type="text/javascript" src="javascript/client.js"></script>
     <link href="stylesheets/client.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -19,71 +21,95 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div id="body_container" class="container-fluid">
-      <div class='row'>
-        <div class='col-md-3'></div>
-        <div class='col-md-6'>
-          <div class='score'>
-            <h1>Score</h1>
-            <br />
-            <h1>5 - 2</h1>
+    <div id='bodyRegion'>
+      <div id="body_container" class="container-fluid">
+        <div class='row'>
+          <div class='col-md-3'></div>
+          <div class='col-md-6'>
+            <div class='score'>
+              <h1>Score</h1>
+              <br />
+              <h1>5 - 2</h1>
+            </div>
+          </div>
+          <div class='col-md-3'>
+            <div class='pull-right room room-occupied'>
+              Room is in use<br />
+              Since 11:15am
+            </div>
           </div>
         </div>
-        <div class='col-md-3'></div>
-      </div>
-      <div class='row'>
-        <div class='col-md-3'>
-          <pre class='pull-left'>
+        <div class='row'>
+          <div class='col-md-3'>
+            <pre class='pull-left visible-lg-block'>
 [12:01] Scored point
 [12:02] Served
 [12:02] Scored point
 [12:03] Scored point
 [12:04] Scored point
 [12:05] Scored point
-          </pre>
-          <div class='pull-right'>
-            <div class='left-person'>
-              <div class='player player-left'>
-                <img src='http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png' class='img-circle' />
-                <h4><span class='label label-info'>Left Player</span></h4>
+[12:01] Scored point
+[12:01] Scored point
+[12:01] Scored point
+[12:02] Served
+[12:02] Scored point
+[12:03] Scored point
+[12:04] Scored point
+[12:05] Scored point
+[12:02] Served
+[12:02] Scored point
+[12:03] Scored point
+[12:04] Scored point
+[12:05] Scored point
+[12:02] Served
+[12:02] Scored point
+[12:03] Scored point
+[12:04] Scored point
+[12:05] Scored point
+            </pre>
+            <div class='pull-right'>
+              <div class='left-person'>
+                <div class='player player-left'>
+                  <img src='http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png' class='img-circle' />
+                  <h4><span class='label label-info'>Left Player</span></h4>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class='col-md-6 col-table'>
-          <div class='ttable ttable-left' style='float:left'></div>
-          <div class='ttable ttable-right' style='float:left'></div>
-        </div>
-        <div class='col-md-3'>
-          <div class='pull-left'>
-            <div class='right-person'>
+          <div class='col-md-6 col-table'>
+            <div class='ttable ttable-left' style='float:left'></div>
+            <div class='ttable ttable-right' style='float:left'></div>
+          </div>
+          <div class='col-md-3'>
+            <div class='pull-left'>
+              <div class='right-person'>
                 <div class='player player-right'>
                   <img src='http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png' class='img-circle' />
                   <h4><span class='label label-info'>Right Player</span></h4>
                 </div>
+              </div>
             </div>
-          </div>
-          <pre class='pull-right'>
+            <pre class='pull-right visible-lg-block'>
 [12:01] Scored point
 [12:02] Served
 [12:02] Scored point
 [12:03] Scored point
 [12:04] Scored point
 [12:05] Scored point
-          </pre>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col-md-3'></div>
-        <div class='col-md-6'>
-          <div class='score'>
-            <h2>Serving this point: Left Player</h2>
+            </pre>
           </div>
         </div>
-        <div class='col-md-3'></div>
-      </div>
+        <div class='row'>
+          <div class='col-md-3'></div>
+          <div class='col-md-6'>
+            <div class='score'>
+              <h2>Serving this point: Left Player</h2>
+            </div>
+          </div>
+          <div class='col-md-3'></div>
+        </div>
 
-    </div>
+      </div>
     </div>
   </body>
 </html>
