@@ -19,8 +19,38 @@ App.addInitializer(function(options) {
   socket.on('heartbeat', function(data) {
     // console.log("Heartbeat received from server: " + data);
   });
+
+  var GameModule = App.module('Game', require('./modules/game'));
+  var RoomModule = App.module('Room', require('./modules/room'));
+
+  GameModule.trigger('start');
+  var BodyView = Backbone.Marionette.LayoutView.extend({
+    template: '#template-game',
+    regions: {
+      ScoreRegion: '#scoreRegion',
+      OccupiedRegion: '#occupiedRegion',
+      LeftInfoRegion: '#leftInfoRegion',
+      RightInfoRegion: '#rightInfoRegion',
+      ServeRegion: '#serveRegion'
+    },
+    onShow: function() {
+      GameModule.trigger('score.show', { region: this.ScoreRegion });
+      GameModule.trigger('leftplayerinfo.show', { region: this.LeftInfoRegion });
+      GameModule.trigger('rightplayerinfo.show', { region: this.RightInfoRegion });
+      GameModule.trigger('serving.show', { region: this.ServeRegion });
+      RoomModule.trigger('occupied.show', { region: this.OccupiedRegion });
+
+    }
+  });
+
+  App.BodyRegion.show(new BodyView());
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+  App.addRegions({
+    BodyRegion: '#bodyRegion'
+  });
+  window.app = App;
   App.start();
+
 });

@@ -4,6 +4,77 @@
     <script type="text/javascript" src="javascript/client.js"></script>
     <link href="stylesheets/client.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/template" id="template-game">
+      <div id='body_container' class='container-fluid'>
+        <div class='row'>
+          <div class='col-md-3'></div>
+          <div class='col-md-6' id='scoreRegion'></div>
+          <div class='col-md-3' id='occupiedRegion'></div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3' id='leftInfoRegion'></div>
+          <div class='col-md-6 col-table'>
+            <div class='ttable ttable-left' style='float:left'></div>
+            <div class='ttable ttable-right' style='float:left'></div>
+          </div>
+          <div class='col-md-3' id='rightInfoRegion'></div>
+        </div>
+        <div class='row'>
+          <div class='col-md-3'></div>
+          <div class='col-md-6' id='serveRegion'></div>
+          <div class='col-md-3'></div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="template-score">
+      <div class='score'>
+        <h2>Score</h2>
+        <br />
+        <h2><%= left_score %> - <%= right_score %></h2>
+      </div>
+    </script>
+
+    <script type="text/template" id="template-occupied">
+      <div class='pull-right room room-<%= occupied_class() %>'>
+        Room is <%= occupied_text() %><br />
+        Since <%= occupied_since() %>
+      </div>
+    </script>
+
+    <script type="text/template" id="template-left-info">
+      <pre class='pull-left visible-lg-block'>
+<%= logs() %>
+      </pre>
+      <div class='pull-right'>
+        <div class='left-person'>
+          <div class='player player-left'>
+            <img src='<%= img_src %>' class='img-circle' />
+            <h4><span class='label label-info'><%= name %></span></h4>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="template-right-info">
+      <div class='pull-left'>
+        <div class='right-person'>
+          <div class='player player-right'>
+            <img src='<%= img_src %>' class='img-circle' />
+            <h4><span class='label label-info'><%= name %></span></h4>
+          </div>
+        </div>
+      </div>
+      <pre class='pull-right visible-lg-block'>
+<%= logs() %>
+      </pre>
+    </script>
+
+    <script type="text/template" id="template-serve">
+      <div class='score'>
+        <h2>Serving this point: <%= serving() %></h2>
+      </div>
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -21,95 +92,6 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div id='bodyRegion'>
-      <div id="body_container" class="container-fluid">
-        <div class='row'>
-          <div class='col-md-3'></div>
-          <div class='col-md-6'>
-            <div class='score'>
-              <h1>Score</h1>
-              <br />
-              <h1>5 - 2</h1>
-            </div>
-          </div>
-          <div class='col-md-3'>
-            <div class='pull-right room room-occupied'>
-              Room is in use<br />
-              Since 11:15am
-            </div>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-md-3'>
-            <pre class='pull-left visible-lg-block'>
-[12:01] Scored point
-[12:02] Served
-[12:02] Scored point
-[12:03] Scored point
-[12:04] Scored point
-[12:05] Scored point
-[12:01] Scored point
-[12:01] Scored point
-[12:01] Scored point
-[12:02] Served
-[12:02] Scored point
-[12:03] Scored point
-[12:04] Scored point
-[12:05] Scored point
-[12:02] Served
-[12:02] Scored point
-[12:03] Scored point
-[12:04] Scored point
-[12:05] Scored point
-[12:02] Served
-[12:02] Scored point
-[12:03] Scored point
-[12:04] Scored point
-[12:05] Scored point
-            </pre>
-            <div class='pull-right'>
-              <div class='left-person'>
-                <div class='player player-left'>
-                  <img src='http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png' class='img-circle' />
-                  <h4><span class='label label-info'>Left Player</span></h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='col-md-6 col-table'>
-            <div class='ttable ttable-left' style='float:left'></div>
-            <div class='ttable ttable-right' style='float:left'></div>
-          </div>
-          <div class='col-md-3'>
-            <div class='pull-left'>
-              <div class='right-person'>
-                <div class='player player-right'>
-                  <img src='http://www.clker.com/cliparts/A/Y/O/m/o/N/placeholder-hi.png' class='img-circle' />
-                  <h4><span class='label label-info'>Right Player</span></h4>
-                </div>
-              </div>
-            </div>
-            <pre class='pull-right visible-lg-block'>
-[12:01] Scored point
-[12:02] Served
-[12:02] Scored point
-[12:03] Scored point
-[12:04] Scored point
-[12:05] Scored point
-            </pre>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-md-3'></div>
-          <div class='col-md-6'>
-            <div class='score'>
-              <h2>Serving this point: Left Player</h2>
-            </div>
-          </div>
-          <div class='col-md-3'></div>
-        </div>
-
-      </div>
-    </div>
+    <div id='bodyRegion'></div>
   </body>
 </html>
