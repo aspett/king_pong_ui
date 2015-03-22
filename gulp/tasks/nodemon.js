@@ -9,7 +9,7 @@ gulp.task('nodemon', function (cb) {
     script: 'server.js',
 
     // watch core server file(s) that require server restart on change
-    watch: ['server.js','views/','lib/','controllers/','client/src/'],
+    watch: ['server.js','server/', 'views/','lib/','controllers/','client/src/'],
 
     // html json etc.
     ext: "js html css json scss"

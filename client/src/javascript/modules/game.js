@@ -52,6 +52,31 @@ var M = function(Module, App, Backbone, Marionette, $, _) {
     }
   });
 
+  Module.on('score.update', function(data) {
+    if(data && data.left !== undefined && data.right !== undefined) {
+      Module.game.set({left_score: data.left, right_score: data.right});
+    }
+  });
+
+  var addLog = function(side, data) {
+    var side_player = side === "left" ? "left_player" : "right_player";
+    var player = Module.game.get(side_player);
+    var logs = player.get('_logs');
+    logs.unshift(data);
+    player.setLogs(logs);
+  }
+  Module.on('leftlog.add', function(data) {
+    if(data) {
+      addLog('left', data);
+    }
+  });
+
+  Module.on('rightlog.add', function(data) {
+    if(data) {
+      addLog('right', data);
+    }
+  });
+
   var ScoreView = Backbone.Marionette.ItemView.extend({
     template: '#template-score',
     onRender: function() {
@@ -74,7 +99,7 @@ var M = function(Module, App, Backbone, Marionette, $, _) {
     },
     modelEvents: {
       'change': 'render'
-    }
+    },
   });
 
   var ServeView = Backbone.Marionette.ItemView.extend({
@@ -134,6 +159,11 @@ var M = function(Module, App, Backbone, Marionette, $, _) {
       name: 'Player Name',
       img_src: 'http://www.edrants.com/wp-content/uploads/2009/09/placeholder.jpg',
       _logs: ["test", "test"]
+    },
+    setLogs: function(logs) {
+      this._logs = logs;
+      this.trigger('change');
+      this.trigger('change:_logs');
     }
   })
 
